@@ -1,7 +1,7 @@
 {
   "name": "adis",
   "productName": "ADIS - Adversarial Identity Simulator",
-  "version": "1.0.0",
+  "version": "3.0.0",
   "description": "Adversarial Digital Identity Simulator — adaptive threat modeling tool",
   "main": "main.js",
   "scripts": {
