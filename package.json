@@ -1,0 +1,62 @@
+{
+  "name": "adis",
+  "productName": "ADIS - Adversarial Identity Simulator",
+  "version": "1.0.0",
+  "description": "Adversarial Digital Identity Simulator — adaptive threat modeling tool",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "dev": "cross-env NODE_ENV=development concurrently \"npm run dev --prefix frontend\" \"wait-on http://localhost:5173 && electron .\"",
+    "build:frontend": "npm run build --prefix frontend",
+    "package": "npm run build:frontend && electron-builder"
+  },
+  "keywords": [],
+  "author": "ADIS",
+  "license": "ISC",
+  "type": "commonjs",
+  "devDependencies": {
+    "concurrently": "^9.2.1",
+    "cors": "^2.8.6",
+    "cross-env": "^10.1.0",
+    "electron": "^41.4.0",
+    "electron-builder": "^26.8.1",
+    "express": "^5.2.1",
+    "wait-on": "^9.0.5"
+  },
+  "build": {
+    "appId": "com.adis.simulator",
+    "productName": "ADIS",
+    "directories": {
+      "output": "dist-electron"
+    },
+    "files": [
+      "main.js",
+      "backend/**/*",
+      "frontend/dist/**/*",
+      "node_modules/**/*"
+    ],
+    "extraResources": [
+      {
+        "from": "backend",
+        "to": "backend",
+        "filter": ["**/*"]
+      }
+    ],
+    "win": {
+      "target": "nsis",
+      "icon": "frontend/public/favicon.png"
+    },
+    "mac": {
+      "target": "dmg",
+      "icon": "frontend/public/favicon.png"
+    },
+    "linux": {
+      "target": "AppImage",
+      "icon": "frontend/public/favicon.png"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true
+    }
+  }
+}
